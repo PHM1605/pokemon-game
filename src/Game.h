@@ -16,7 +16,7 @@ public:
     return s_pInstance;
   }
 
-  void init(const char* title, int width, int height);
+  bool init(const char* title, int width, int height, bool fullscreen);
   void update();
   void render();
   void handleEvents();
@@ -24,18 +24,22 @@ public:
 
   SDL_Renderer* getRenderer() const { return m_pRenderer; }
   SDL_Window* getWindow() const { return m_pWindow; }
-  std::unique_ptr<GameStateMachine>& getStateMachine() { return m_pGameStateMachine; }
-  void quit() { m_bRunning = false; }
-  bool running() { return m_bRunning; }
+  GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
 
+  bool running() { return m_bRunning; }
+  void quit() { m_bRunning = false; }
+
+  int getGameWidth() const { return m_iGameWidth; }
+  int getGameHeight() const { return m_iGameHeight; }
+  
 private:
   Game();
-  ~Game();
+  ~Game() { delete s_pInstance; }
 
   bool m_bRunning = false;
   SDL_Window* m_pWindow = nullptr;
   SDL_Renderer* m_pRenderer = nullptr;
-  std::unique_ptr<GameStateMachine> m_pGameStateMachine;
+  GameStateMachine* m_pGameStateMachine;
   int m_iGameWidth;
   int m_iGameHeight;
   

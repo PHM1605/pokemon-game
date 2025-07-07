@@ -9,13 +9,14 @@ public:
 
     void update();
     void render();
+    void clean();
 
-    void pushState(std::unique_ptr<GameState> pState);
-    void changeState(std::unique_ptr<GameState> pState);
+    void pushState(GameState* pState);
+    void changeState(GameState* pState);
     void popState();
 
-    std::vector<std::unique_ptr<GameState>>& getGameStates();
+    std::vector<GameState*>& getGameStates();
 
 private:
-    std::vector<std::unique_ptr<GameState>> m_gameStates;
+    std::vector<GameState*> m_gameStates;
 };

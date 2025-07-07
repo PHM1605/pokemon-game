@@ -4,20 +4,22 @@
 #include "OverworldState.h"
 #include <iostream>
 
+const std::string OverworldState::s_overworldID = "OVERWORLD";
+
 OverworldState::OverworldState() {
   SDL_Renderer* r = Game::Instance()->getRenderer();
   m_player.load(r, "assets/player.png", 200, 300); // position on map (200,300)
   m_opponent.load(r, "assets/opponent.png", 600, 300);
 }
 
-void OverworldState::update(const SDL_Event& e) {
+void OverworldState::update() {
   if (m_duelTriggered) {
     m_duelStartTimer++;
     // animate text sliding in
     if (m_textX < 400)
       m_textX += 20;
     if (m_duelStartTimer > 120) {
-      Game::Instance()->changeState(std::make_shared<DuelState>());
+      Game::Instance()->changeState(new DuelState());
     }
     return;
   }
@@ -37,7 +39,7 @@ void OverworldState::update(const SDL_Event& e) {
   }
 }
 
-void OverworldState::render(SDL_Renderer* renderer) {
+void OverworldState::render() {
   SDL_SetRenderDrawColor(renderer, 0, 128, 255, 255);
   SDL_RenderClear(renderer);
   m_player.render(renderer);
