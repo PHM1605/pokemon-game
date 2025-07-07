@@ -8,7 +8,7 @@ StoryState::StoryState() {
   m_timer = 0;
 }
 
-void StoryState::update() {
+void StoryState::update(const SDL_Event& e) {
   m_timer++;
   // wait ~5s (assuming 60fps)
   if (m_timer>300) {

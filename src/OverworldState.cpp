@@ -10,7 +10,7 @@ OverworldState::OverworldState() {
   m_opponent.load(r, "assets/opponent.png", 600, 300);
 }
 
-void OverworldState::update() {
+void OverworldState::update(const SDL_Event& e) {
   if (m_duelTriggered) {
     m_duelStartTimer++;
     // animate text sliding in

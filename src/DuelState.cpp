@@ -8,7 +8,7 @@ DuelState::DuelState() {
 
 DuelState:: ~DuelState() {}
 
-void DuelState::update() {}
+void DuelState::update(const SDL_Event &e) {}
 
 void DuelState::render(SDL_Renderer* renderer) {
   m_card.render(renderer);
