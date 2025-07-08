@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<States>
+  <MAINMENU>
+    <TEXTURES>
+      <texture filename="assets/main-menu-screen.png" ID="mainmenuscreen"/>
+      <texture filename="assets/press-start.png" ID="newgamebutton" />
+    </TEXTURES>
+    <OBJECTS>
+      <object type="MenuButton" x="400" y="400" width="400" height="100" textureID="newgamebutton" numFrames="0" />
+    </OBJECTS>
+  </MAINMENU>
+</States>

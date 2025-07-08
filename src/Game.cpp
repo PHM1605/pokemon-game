@@ -1,10 +1,11 @@
-#include "Game.h"
-#include "InputHandler.h"
-#include "MainMenuState.h"
-// #include "OverworldState.h"
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
+#include "Game.h"
+#include "InputHandler.h"
+#include "MainMenuState.h"
+#include "TextureManager.h"
+// #include "OverworldState.h"
 
 Game* Game::s_pInstance = nullptr;
 
@@ -77,8 +78,14 @@ void Game::clean() {
   // clean game state machine
   m_pGameStateMachine->clean();
   delete m_pGameStateMachine;
+  m_pGameStateMachine = nullptr;
   // clean window and renderer
   SDL_DestroyRenderer(m_pRenderer);
   SDL_DestroyWindow(m_pWindow);
   SDL_Quit();
+  // clear TextureMap
+  TextureManager::Instance()->clearTextureMap();
+  TextureManager::Instance()->clean();
+  // delete the Game Instance itself
+  delete s_pInstance;
 }

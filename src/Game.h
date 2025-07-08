@@ -34,7 +34,7 @@ public:
   
 private:
   Game();
-  ~Game() { delete s_pInstance; }
+  ~Game() = default;
 
   bool m_bRunning = false;
   SDL_Window* m_pWindow = nullptr;
@@ -44,5 +44,4 @@ private:
   int m_iGameHeight;
   
   static Game* s_pInstance;
-  std::shared_ptr<GameState> m_currentState;
 };
