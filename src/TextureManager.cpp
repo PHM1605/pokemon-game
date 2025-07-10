@@ -4,6 +4,8 @@
 
 TextureManager* TextureManager::s_pInstance = nullptr;
 
+// fileName: full path of .png file; set in game.xml
+// id: name of that Texture, set in game.xml (read in StateParser.cpp)
 bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pRenderer) {
   SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
   if (pTempSurface == 0) {

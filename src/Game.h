@@ -32,6 +32,9 @@ public:
   int getGameWidth() const { return m_iGameWidth; }
   int getGameHeight() const { return m_iGameHeight; }
   
+  // Levels  
+  const int getCurrentLevel() { return m_currentLevel; }
+  std::vector<std::string> getLevelFiles() { return m_levelFiles; }
 private:
   Game();
   ~Game() = default;
@@ -42,6 +45,9 @@ private:
   GameStateMachine* m_pGameStateMachine;
   int m_iGameWidth;
   int m_iGameHeight;
+  // Levels 
+  int m_currentLevel;
+  std::vector<std::string> m_levelFiles;
   
   static Game* s_pInstance;
 };

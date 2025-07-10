@@ -8,13 +8,12 @@ public:
 
   virtual void update();
   virtual void render();
-
-  virtual bool onEnter();
-  virtual bool onExit();
+  virtual bool load();
+  virtual bool clean();
 
   virtual std::string getStateID() const { return s_mainMenuID; }
 
 private:
-  static const std::string s_mainMenuID;
+  static const std::string s_mainMenuID; // = stateID (set in game.xml file)
   std::vector<GameObject*> m_gameObjects;
 };

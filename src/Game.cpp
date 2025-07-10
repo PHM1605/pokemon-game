@@ -5,6 +5,7 @@
 #include "GameObjectFactory.h"
 #include "InputHandler.h"
 #include "MainMenuState.h"
+#include "MenuButton.h"
 #include "Player.h"
 #include "TextureManager.h"
 // #include "OverworldState.h"
@@ -16,7 +17,10 @@ Game::Game():
   m_pWindow(nullptr),
   m_pRenderer(nullptr),
   m_pGameStateMachine(nullptr)
-{}
+{
+  m_levelFiles.push_back("assets/map1.tmx");
+  m_currentLevel = 1;
+}
 
 Game::~Game() {
   // they have been cleaned properly in onExit()
@@ -58,7 +62,7 @@ bool Game::init(const char* title, int width, int height, bool fullscreen) {
   // register GameObjects' Creators
   GameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
   GameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
-  GameObjectFactory::Instance()->registerType("NPC", new NPCCreator());
+  // GameObjectFactory::Instance()->registerType("NPC", new NPCCreator());
 
   m_pGameStateMachine = new GameStateMachine();
   m_pGameStateMachine->changeState(new MainMenuState());

@@ -1,18 +1,24 @@
 #include <SDL2/SDL_ttf.h>
 #include "DuelState.h"
 #include "Game.h"
-#include "OverworldState.h"
+#include "LevelParser.h"
+#include "PlayState.h"
 #include <iostream>
 
-const std::string OverworldState::s_overworldID = "OVERWORLD";
+const std::string PlayState::s_playID = "PLAY";
 
-OverworldState::OverworldState() {
-  SDL_Renderer* r = Game::Instance()->getRenderer();
-  m_player.load(r, "assets/player.png", 200, 300); // position on map (200,300)
-  m_opponent.load(r, "assets/opponent.png", 600, 300);
+PlayState::PlayState() {
+  // SDL_Renderer* r = Game::Instance()->getRenderer();
+  // m_player.load(r, "assets/player.png", 200, 300); // position on map (200,300)
+  // m_opponent.load(r, "assets/opponent.png", 600, 300);
 }
 
-void OverworldState::update() {
+bool PlayState::load() {
+  LevelParser levelParser;
+  pLevel = levelParser.parseLevel(Game::Instance()->getLevelFiles()[Game::Instance()->getCurrentLevel()-1].c_str());
+}
+
+void PlayState::update() {
   if (m_duelTriggered) {
     m_duelStartTimer++;
     // animate text sliding in
@@ -39,7 +45,7 @@ void OverworldState::update() {
   }
 }
 
-void OverworldState::render() {
+void PlayState::render() {
   SDL_SetRenderDrawColor(renderer, 0, 128, 255, 255);
   SDL_RenderClear(renderer);
   m_player.render(renderer);
