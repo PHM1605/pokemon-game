@@ -2,8 +2,10 @@
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
 #include "Game.h"
+#include "GameObjectFactory.h"
 #include "InputHandler.h"
 #include "MainMenuState.h"
+#include "Player.h"
 #include "TextureManager.h"
 // #include "OverworldState.h"
 
@@ -53,6 +55,11 @@ bool Game::init(const char* title, int width, int height, bool fullscreen) {
     return false;
   }
 
+  // register GameObjects' Creators
+  GameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
+  GameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
+  GameObjectFactory::Instance()->registerType("NPC", new NPCCreator());
+
   m_pGameStateMachine = new GameStateMachine();
   m_pGameStateMachine->changeState(new MainMenuState());
   
@@ -84,8 +91,9 @@ void Game::clean() {
   SDL_DestroyWindow(m_pWindow);
   SDL_Quit();
   // clear TextureMap
-  TextureManager::Instance()->clearTextureMap();
   TextureManager::Instance()->clean();
+  // clean GameObjectFactory
+  GameObjectFactory::Instance()->clean(); // clean m_objects
   // delete the Game Instance itself
   delete s_pInstance;
 }

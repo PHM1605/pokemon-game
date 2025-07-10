@@ -49,10 +49,10 @@ void TextureManager::drawTile(std::string id, int margin, int spacing, int x, in
 }
 
 void TextureManager::clean() {
-  if (s_pInstance) {
-    delete s_pInstance;
-    s_pInstance = nullptr;
+  for (auto& pair: m_textureMap) {
+    SDL_DestroyTexture(pair.second);
   }
+  m_textureMap.clear();
 }
 
 void TextureManager::clearFromTextureMap(std::string id) {
@@ -61,11 +61,4 @@ void TextureManager::clearFromTextureMap(std::string id) {
     SDL_DestroyTexture(it->second);
     m_textureMap.erase(id);
   }
-}
-
-void TextureManager::clearTextureMap() {
-  for (auto& pair: m_textureMap) {
-    SDL_DestroyTexture(pair.second);
-  }
-  m_textureMap.clear();
 }

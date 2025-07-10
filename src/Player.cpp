@@ -1,6 +1,10 @@
 #include "Player.h"
 #include <SDL2/SDL_image.h>
 
+Player::Player():
+  GameObject()
+{}
+
 bool Player::load(SDL_Renderer* renderer, const std::string& file, int x, int y) {
   SDL_Surface* surf = IMG_Load(file.c_str()); 
   if (!surf) return false;
