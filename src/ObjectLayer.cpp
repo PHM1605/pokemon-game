@@ -12,6 +12,8 @@ ObjectLayer::~ObjectLayer() {
 void ObjectLayer::update() {
   for (std::vector<GameObject*>::iterator it = m_gameObjects.begin(); it != m_gameObjects.end();) {
     // if GameObject is within screen
+    auto tmp = Camera::Instance()->getPosition();
+    auto b = tmp.getX();
     if ((*it)->getPosition().getX() <= Camera::Instance()->getPosition().getX() + Game::Instance()->getGameWidth())
   }
 }
