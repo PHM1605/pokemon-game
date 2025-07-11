@@ -1,5 +1,6 @@
 #include "GameStateMachine.h"
 #include <string>
+#include <iostream>
 
 void GameStateMachine::update() {
     if (!m_gameStates.empty()) {

@@ -18,15 +18,12 @@ void Background::load(std::unique_ptr<LoaderParams> pParams) {
 }
 
 void Background::render() {
-  TextureManager::Instance()->drawFrame(
+  TextureManager::Instance()->draw(
     m_textureID,
     static_cast<int>(m_position.getX()),
     static_cast<int>(m_position.getY()),
     m_width, m_height,
-    0, 0,
-    Game::Instance()->getRenderer(),
-    m_angle, m_alpha
-  );
+    Game::Instance()->getRenderer());
 }
 
 void Background::update() {

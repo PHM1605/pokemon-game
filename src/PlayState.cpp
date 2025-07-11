@@ -1,5 +1,5 @@
 #include <SDL2/SDL_ttf.h>
-#include "DuelState.h"
+// #include "DuelState.h"
 #include "Game.h"
 #include "LevelParser.h"
 #include "PlayState.h"

@@ -26,7 +26,11 @@ void MainMenuState::update() {
 }
 
 void MainMenuState::render() {
-
+  if (m_bLoadingComplete && !m_gameObjects.empty()) {
+    for (int i=0; i<m_gameObjects.size(); i++) {
+      m_gameObjects[i]->render();
+    }
+  }
 }
 
 void MainMenuState::clean() {

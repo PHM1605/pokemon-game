@@ -14,7 +14,6 @@ void MenuButton::load(std::unique_ptr<LoaderParams>const pParams) {
   m_numFrames = pParams->getNumFrames();
   m_currentFrame = NOT_CHOSEN;
 }
-
 void MenuButton::render() {
   TextureManager::Instance()->drawFrame(
     m_textureID,
