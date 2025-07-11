@@ -37,7 +37,7 @@ public:
   std::vector<std::string> getLevelFiles() { return m_levelFiles; }
 private:
   Game();
-  ~Game() = default;
+  ~Game();
 
   bool m_bRunning = false;
   SDL_Window* m_pWindow = nullptr;

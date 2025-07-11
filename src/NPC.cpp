@@ -1,19 +1,26 @@
-#include "NPC.h"
 #include <SDL2/SDL_image.h>
+#include "Game.h"
+#include "NPC.h"
+#include "TextureManager.h"
 
-bool NPC::load(SDL_Renderer* renderer, const std::string& file, int x, int y) {
-  SDL_Surface* surf = IMG_Load(file.c_str());
-  if (!surf) return false;
-  m_texture = SDL_CreateTextureFromSurface(renderer, surf);
-  SDL_FreeSurface(surf);
-  m_rect = {x, y, 48, 48};
-  return true;
+void NPC::load(std::unique_ptr<LoaderParams> const &pParams) {
+  m_position = Vector2D(pParams->getX(), pParams->getY());
+  m_width = pParams->getWidth();
+  m_height = pParams->getHeight();
+  m_textureID = pParams->getTextureID();
+  m_numFrames = pParams->getNumFrames();
 }
 
-void NPC::render(SDL_Renderer* renderer) {
-  SDL_RenderCopy(renderer, m_texture, nullptr, &m_rect);
+void NPC::render() {
+  TextureManager::Instance()->drawFrame(
+    m_textureID,
+    (Uint32)m_position.getX(), (Uint32)m_position.getY(), m_width, m_height,
+    m_currentRow, m_currentFrame,
+    Game::Instance()->getRenderer(),
+    m_angle, m_alpha
+  );
 }
 
-SDL_Rect NPC::getRect() const {
-  return m_rect;
-}
+// SDL_Rect NPC::getRect() const {
+//   return m_rect;
+// }

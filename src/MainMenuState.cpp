@@ -7,12 +7,11 @@
 
 const std::string MainMenuState::s_mainMenuID = "MAINMENU";
 
-bool MainMenuState::load() {
+void MainMenuState::load() {
   std::cout << "Entering MainMenuState\n";
   StateParser stateParser;
   stateParser.parseState("assets/game.xml", s_mainMenuID, &m_gameObjects, &m_textureIDList);
   m_bLoadingComplete = true;
-  return true;
 }
 
 void MainMenuState::update() {
@@ -30,7 +29,7 @@ void MainMenuState::render() {
 
 }
 
-bool MainMenuState::clean() {
+void MainMenuState::clean() {
   std::cout << "exiting MainMenuState\n";
   if (m_bLoadingComplete && !m_gameObjects.empty()) {
     for (auto pGameObject: m_gameObjects) {
@@ -38,6 +37,4 @@ bool MainMenuState::clean() {
     }
   }
   m_gameObjects.clear();
-
-  return true;
 }

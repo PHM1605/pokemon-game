@@ -6,10 +6,10 @@ class MainMenuState: public GameState {
 public:
   virtual ~MainMenuState() = default;
 
+  virtual void load();
   virtual void update();
   virtual void render();
-  virtual bool load();
-  virtual bool clean();
+  virtual void clean();
 
   virtual std::string getStateID() const { return s_mainMenuID; }
 

@@ -15,7 +15,7 @@ void GameStateMachine::render() {
 
 void GameStateMachine::clean() {
     for (auto gameState: m_gameStates) {
-        gameState->onExit();
+        gameState->clean();
         delete gameState;
     }
     m_gameStates.clear();
@@ -27,15 +27,14 @@ std::vector<GameState*>& GameStateMachine::getGameStates() {
 
 void GameStateMachine::popState() {
     if (!m_gameStates.empty()) {
-        m_gameStates.back()->onExit();
+        m_gameStates.back()->load();
         m_gameStates.pop_back();
     }
-    m_gameStates.back()->resume(); // do nothing
 }
 
 void GameStateMachine::pushState(GameState* pState) {
     m_gameStates.push_back(pState);
-    m_gameStates.back()->onEnter();
+    m_gameStates.back()->load();
 }
 
 void GameStateMachine::changeState(GameState* pState) {
@@ -44,16 +43,7 @@ void GameStateMachine::changeState(GameState* pState) {
             return; // do nothing
         m_gameStates.pop_back();
     }
-    pState->onEnter();
+    pState->load();
     m_gameStates.push_back(pState);
-}
-
-
-void GameStateMachine::popState() {
-    if (!m_gameStates.empty()) {
-        m_gameStates.back()->onExit();
-        m_gameStates.pop_back();
-    }
-    m_gameStates.back()->resume(); // do nothing
 }
 

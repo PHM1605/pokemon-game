@@ -1,4 +1,6 @@
 #pragma once 
+#include <string>
+#include <vector>
 #include "Layer.h"
 
 class TileLayer;
@@ -19,7 +21,17 @@ class Level {
 public:
   ~Level();
 
+  void update();
+  void render();
+
+  std::vector<Tileset>* getTilesets() { return &m_tilesets; }
+  std::vector<Layer*>* getLayers() { return &m_layers; }
+  std::vector<TileLayer*>* getCollisionLayers() { return &m_collisionLayers; }
+
 private:
   friend class LevelParser;
   Level() {} // put constructor in private, to create Level only with LevelParser
+  std::vector<Layer*> m_layers;
+  std::vector<Tileset> m_tilesets; // will be push_back() in LevelParser (parseTilesets() function)
+  std::vector<TileLayer*> m_collisionLayers;
 };

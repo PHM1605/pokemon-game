@@ -10,10 +10,10 @@ public:
   PlayState();
   virtual ~PlayState() {}
 
-  virtual bool load();
+  virtual void load();
   virtual void update();
   virtual void render();  
-  virtual bool clean();
+  virtual void clean();
 
   virtual std::string getStateID() const { return s_playID; }
 

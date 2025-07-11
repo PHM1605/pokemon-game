@@ -11,11 +11,11 @@ public:
 
   
 
-  bool load(SDL_Renderer* renderer, const std::string& file, int x, int y);
+  void load(std::unique_ptr<LoaderParams> const &pParams);
   void update();
-  void render(SDL_Renderer* renderer);
+  void render();
   
-  SDL_Rect getRect() const;
+  // SDL_Rect getRect() const;
 
   virtual std::string type() { return "NPC"; }
 

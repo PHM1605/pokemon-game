@@ -5,18 +5,32 @@ set(SourceFiles
   src/Card.cpp 
   src/DuelState.cpp 
   src/Game.cpp 
+  src/GameObjectFactory.cpp
+  src/GameStateMachine.cpp
+  src/InputHandler.cpp
+  src/Level.cpp
+  src/LevelParser.cpp
   src/main.cpp
+  src/MainMenuState.cpp
+  src/MenuButton.cpp
   src/MenuState.cpp
   src/NPC.cpp
-  src/OverworldState.cpp 
+  src/PlayState.cpp 
   src/Player.cpp
   src/StoryState.cpp
+  src/TextureManager.cpp
+  src/tinystr.cpp 
+  src/tinyxml.cpp 
+  src/tinyxmlerror.cpp 
+
 )
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(SDL2 REQUIRED sdl2)
 pkg_check_modules(SDL2_IMAGE REQUIRED SDL2_image)
 pkg_check_modules(SDL2_TTF REQUIRED SDL2_ttf)
+
+find_package(ZLIB REQUIRED)
 
 add_executable(${PROJECT_NAME}
   ${SourceFiles}

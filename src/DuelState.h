@@ -7,8 +7,8 @@ public:
   DuelState();
   ~DuelState();
   
-  void update(const SDL_Event& e) override;
-  void render(SDL_Renderer* renderer) override;
+  void update(const SDL_Event& e);
+  void render(SDL_Renderer* renderer);
 
 private:
   Card m_card;

@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL2/SDL.h>
+#include <memory>
 #include <string>
 #include "GameObjectFactory.h"
 
@@ -8,11 +9,13 @@ public:
   Player();
   virtual ~Player() {}
 
-  bool load(SDL_Renderer* renderer, const std::string& file, int x, int y);
+  virtual std::string type() { return "Player"; }
+  void load(std::unique_ptr<LoaderParams> const &pParams);
   void handleInput(const Uint8* keyState);
   void update();
-  void render(SDL_Renderer* renderer);
+  void render();
   SDL_Rect getRect() const;
+  
 
 private:
   SDL_Texture* m_texture = nullptr;

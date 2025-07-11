@@ -1,4 +1,5 @@
 #pragma once 
+#include <memory>
 #include <vector>
 #include "LoaderParams.h"
 #include "Vector2D.h"
@@ -23,8 +24,6 @@ protected:
     m_textureID("")
   {}
 
-  virtual ~GameObject() {}
-
   Vector2D m_position;
   Vector2D m_velocity;
   Vector2D m_acceleration;
@@ -35,6 +34,8 @@ protected:
   int m_currentRow;
   int m_currentFrame;
   int m_numFrames;
+  // moving left or right changes the Sprite flip direction
+  bool m_bFlipped;
   // Object is within Screen or not 
   bool m_bUpdating;
   // additional infos
