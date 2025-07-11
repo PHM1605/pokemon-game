@@ -14,6 +14,8 @@ public:
   
   virtual std::string type() = 0;
 
+  Vector2D& getPosition() { return m_position; }
+
 protected:
   GameObject():
     m_position(0,0), m_velocity(0,0), m_acceleration(0,0),

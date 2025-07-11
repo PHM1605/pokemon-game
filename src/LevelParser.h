@@ -10,11 +10,11 @@ public:
 private:
   void parseTextures(TiXmlElement* pTextureRoot);
   void parseTilesets(TiXmlElement* pTilesetRoot, std::vector<Tileset>* pTilesets);
-  // pLayers: ObjectLayer + TileLayer
+  // pLayers: contains BOTH ObjectLayer + TileLayer (TileLayer includes Overlay and Collision)
   void parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*> *pLayers,const std::vector<Tileset> *pTilesets, std::vector<TileLayer*> *pCollisionLayers);
   void parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Layer*> *pLayers, Level* pLevel);
   
   int m_tileSize; // 32 pixels
-  int m_width;
-  int m_height;
+  int m_width; // [cell]
+  int m_height; // [cell]
 };

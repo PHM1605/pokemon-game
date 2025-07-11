@@ -11,8 +11,8 @@ struct Tileset {
   int tileHeight;
   int spacing;
   int margin;
-  int width; // of whole Tileset .png 
-  int height; // of whole Tileset .png
+  int width; // of whole Tileset .png [pixels] 
+  int height; // of whole Tileset .png [pixels]
   int numColumns;
   std::string name; // Tileset name
 };

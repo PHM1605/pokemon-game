@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(yugioh-game)
+project(pokemon-game)
 
 set(SourceFiles
   src/Card.cpp 
