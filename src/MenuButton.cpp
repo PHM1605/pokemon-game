@@ -6,7 +6,7 @@ MenuButton::MenuButton():
   GameObject() 
 {}
 
-void MenuButton::load(std::unique_ptr<LoaderParams>const &pParams) {
+void MenuButton::load(std::unique_ptr<LoaderParams>const pParams) {
   m_position = Vector2D(pParams->getX(), pParams->getY());
   m_width = pParams->getWidth();
   m_height = pParams->getHeight();

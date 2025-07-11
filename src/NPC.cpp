@@ -3,7 +3,7 @@
 #include "NPC.h"
 #include "TextureManager.h"
 
-void NPC::load(std::unique_ptr<LoaderParams> const &pParams) {
+void NPC::load(std::unique_ptr<LoaderParams> const pParams) {
   m_position = Vector2D(pParams->getX(), pParams->getY());
   m_width = pParams->getWidth();
   m_height = pParams->getHeight();
@@ -19,6 +19,10 @@ void NPC::render() {
     Game::Instance()->getRenderer(),
     m_angle, m_alpha
   );
+}
+
+void NPC::update() {
+  
 }
 
 // SDL_Rect NPC::getRect() const {

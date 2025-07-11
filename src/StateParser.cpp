@@ -50,6 +50,7 @@ bool StateParser::parseState(const char* stateFile, std::string stateID, std::ve
     }
   }
   parseObjects(pObjectRoot, pObjects);
+  return true;
 }
 
 // pStateRoot: <TEXTURES> tag

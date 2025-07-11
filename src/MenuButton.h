@@ -8,7 +8,7 @@ public:
   MenuButton();
   virtual ~MenuButton() {}
 
-  virtual void load(std::unique_ptr<LoaderParams> const &pParams);
+  virtual void load(std::unique_ptr<LoaderParams> const pParams);
   virtual void render();
   virtual void update();
 

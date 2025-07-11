@@ -2,19 +2,21 @@
 #include <memory>
 #include <vector>
 #include "LoaderParams.h"
+#include "TileLayer.h"
 #include "Vector2D.h"
 
 class GameObject {
 public:
   virtual ~GameObject() {}
 
-  virtual void load(std::unique_ptr<LoaderParams> const& pParams) = 0;
+  virtual void load(std::unique_ptr<LoaderParams> pParams) = 0;
   virtual void render() = 0;
   virtual void update() = 0;
   
   virtual std::string type() = 0;
 
   Vector2D& getPosition() { return m_position; }
+  void setCollisionLayers(std::vector<TileLayer*>* layers) { m_pCollisionLayers = layers; }
 
 protected:
   GameObject():
@@ -43,6 +45,7 @@ protected:
   // additional infos
   double m_angle;
   int m_alpha;
-
+  std::unique_ptr<LoaderParams> m_pParams;
   std::string m_textureID;
+  std::vector<TileLayer*>* m_pCollisionLayers;
 };

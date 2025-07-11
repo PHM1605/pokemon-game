@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.0.0)
 project(pokemon-game)
 
 set(SourceFiles
-  src/Card.cpp 
-  src/DuelState.cpp 
+  src/Background.cpp
+  src/base64.cpp
+  src/Camera.cpp 
   src/Game.cpp 
   src/GameObjectFactory.cpp
   src/GameStateMachine.cpp
@@ -15,14 +16,17 @@ set(SourceFiles
   src/MenuButton.cpp
   src/MenuState.cpp
   src/NPC.cpp
+  src/ObjectLayer.cpp
   src/PlayState.cpp 
   src/Player.cpp
+  src/StateParser.cpp
   src/StoryState.cpp
   src/TextureManager.cpp
+  src/TileLayer.cpp
   src/tinystr.cpp 
   src/tinyxml.cpp 
   src/tinyxmlerror.cpp 
-
+  src/tinyxmlparser.cpp
 )
 
 find_package(PkgConfig REQUIRED)
@@ -41,18 +45,21 @@ target_include_directories(${PROJECT_NAME} PRIVATE
   ${SDL2_IMAGE_INCLUDE_DIRS}
   ${SDL2_TTF_INCLUDE_DIRS}
   ${CMAKE_CURRENT_SOURCE_DIR} # for #include <src/window.h> 
+  ${ZLIB_INCLUDE_DIRS}
 )
 
 target_link_directories(${PROJECT_NAME} PRIVATE 
   ${SDL2_LIBRARY_DIRS}
   ${SDL2_IMAGE_LIBRARY_DIRS}
   ${SDL2_TTF_LIBRARY_DIRS}
+  ${ZLIB_LIBRARY_DIRS}
 )
 
 target_link_libraries(${PROJECT_NAME} 
   ${SDL2_LIBRARIES}
   ${SDL2_IMAGE_LIBRARIES}
   ${SDL2_TTF_LIBRARIES}
+  ${ZLIB_LIBRARIES}
 )
 
 # Copy icons

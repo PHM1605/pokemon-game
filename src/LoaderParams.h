@@ -4,7 +4,10 @@
 class LoaderParams {
 public:
   LoaderParams(int x, int y, int width, int height, std::string textureID, int numFrames, int animSpeed = 0):
-    m_x(x), m_y(y)
+    m_x(x), m_y(y),
+    m_width(width), m_height(height),
+    m_textureID(textureID),
+    m_numFrames(numFrames), m_animSpeed(animSpeed)
   {}
   ~LoaderParams() {}
   int getX() const { return m_x; }

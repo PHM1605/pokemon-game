@@ -10,7 +10,7 @@ public:
   virtual ~Player() {}
 
   virtual std::string type() { return "Player"; }
-  void load(std::unique_ptr<LoaderParams> const &pParams);
+  void load(std::unique_ptr<LoaderParams> pParams);
   void handleInput(const Uint8* keyState);
   void update();
   void render();

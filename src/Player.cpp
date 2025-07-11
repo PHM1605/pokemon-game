@@ -7,8 +7,16 @@ Player::Player():
   GameObject()
 {}
 
-void Player::load(std::unique_ptr<LoaderParams> const &pParams) {
-  GameObject::load(std::move(pParams));
+void Player::load(std::unique_ptr<LoaderParams> pParams) {
+  m_pParams = std::move(pParams);
+
+  m_position.setX(m_pParams->getX());
+  m_position.setY(m_pParams->getY());
+  m_width = m_pParams->getWidth();
+  m_height = m_pParams->getHeight();
+  m_textureID = m_pParams->getTextureID();
+  m_numFrames = m_pParams->getNumFrames();
+  m_rect = {static_cast<int>(m_position.getX()), static_cast<int>(m_position.getY()), m_width, m_height};
 }
 
 void Player::handleInput(const Uint8* keystate) {

@@ -11,7 +11,7 @@ public:
 
   
 
-  void load(std::unique_ptr<LoaderParams> const &pParams);
+  void load(std::unique_ptr<LoaderParams> const pParams);
   void update();
   void render();
   

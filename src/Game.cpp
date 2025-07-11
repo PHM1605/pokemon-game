@@ -1,6 +1,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
+#include "Background.h"
 #include "Game.h"
 #include "GameObjectFactory.h"
 #include "InputHandler.h"
@@ -62,7 +63,7 @@ bool Game::init(const char* title, int width, int height, bool fullscreen) {
   // register GameObjects' Creators
   GameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
   GameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
-  // GameObjectFactory::Instance()->registerType("NPC", new NPCCreator());
+  GameObjectFactory::Instance()->registerType("Background", new BackgroundCreator());
 
   m_pGameStateMachine = new GameStateMachine();
   m_pGameStateMachine->changeState(new MainMenuState());
