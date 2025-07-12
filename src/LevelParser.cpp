@@ -96,9 +96,10 @@ void LevelParser::parseTextures(TiXmlElement* pTextureRoot) {
 // </tileset>
 void LevelParser::parseTilesets(TiXmlElement* pTilesetRoot, std::vector<Tileset>* pTilesets) {
   std::string assetsTag = "assets/"; 
-  std::cout << "adding texture " << pTilesetRoot->FirstChildElement()->Attribute("source") << " with ID" << pTilesetRoot->Attribute("name") << "\n";
+  assetsTag.append(pTilesetRoot->FirstChildElement()->Attribute("source"));
+  std::cout << "adding Tileset " << assetsTag << " with ID " << pTilesetRoot->Attribute("name") << "\n";
   TextureManager::Instance()->load(
-    assetsTag.append(pTilesetRoot->FirstChildElement()->Attribute("source")), // "assets/blocks1.png"
+    assetsTag, // "assets/blocks1.png"
     pTilesetRoot->Attribute("name"), // ID file that Texture: "blocks1"
     Game::Instance()->getRenderer()
   );
@@ -129,7 +130,9 @@ void LevelParser::parseTilesets(TiXmlElement* pTilesetRoot, std::vector<Tileset>
 // </objectgroup>
 void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Layer*>* pLayers, Level* pLevel) {
   ObjectLayer* pObjectLayer = new ObjectLayer();
+  
   for (TiXmlElement* e = pObjectElement->FirstChildElement(); e != nullptr; e = e->NextSiblingElement()) {
+    
     // e: <object>
     if (e->Value() == std::string("object")) {
       int x, y, width, height, numFrames, animSpeed = 0;
@@ -198,11 +201,13 @@ void LevelParser::parseTileLayer(
 
   TiXmlElement* pDataNode;
   for (TiXmlElement* e = pTileElement->FirstChildElement(); e != nullptr; e = e->NextSiblingElement()) {
+    
     if (e->Value() == std::string("properties")) { // collidable object
-      for (TiXmlElement* property = pTileElement->FirstChildElement(); property != nullptr; property = property->NextSiblingElement()) {
+      for (TiXmlElement* property = e->FirstChildElement(); property != nullptr; property = property->NextSiblingElement()) {
         if (property->Value() == std::string("property")) {
-          if (property->Attribute("name") == std::string("collidable"))
+          if (property->Attribute("name") == std::string("collidable")) {
             collidable = true;
+          }            
         }
       }
     }

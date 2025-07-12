@@ -8,11 +8,13 @@ TextureManager* TextureManager::s_pInstance = nullptr;
 // id: name of that Texture, set in game.xml (read in StateParser.cpp)
 bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pRenderer) {
   SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
+  
   if (pTempSurface == 0) {
     std::cout << IMG_GetError();
     return false;
   }
   SDL_Texture* pTexture = SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
+  
   SDL_FreeSurface(pTempSurface);
   if(pTexture != 0) {
     m_textureMap[id] = pTexture;

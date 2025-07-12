@@ -20,7 +20,7 @@ Game::Game():
   m_pRenderer(nullptr),
   m_pGameStateMachine(nullptr)
 {
-  m_levelFiles.push_back("assets/map1.tmx");
+  m_levelFiles.push_back("assets/level1.tmx");
   m_currentLevel = 1;
 }
 

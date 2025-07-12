@@ -50,9 +50,9 @@ Tileset TileLayer::getTilesetByID(int tileID) {
     if (i < m_tilesets.size()-1) {
       if (tileID >= m_tilesets[i].firstGridID && tileID < m_tilesets[i+1].firstGridID)
         return m_tilesets[i];
-      else 
-        return m_tilesets[i];
-    }
+    } else {
+      return m_tilesets[i];
+    }   
   }
   std::cout << "did not find Tileset, returning empty tileset\n";
   Tileset t;
