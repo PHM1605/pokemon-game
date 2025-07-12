@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "LevelParser.h"
 #include "PlayState.h"
+#include "StateParser.h"
 #include <iostream>
 
 const std::string PlayState::s_playID = "PLAY";
@@ -15,6 +16,11 @@ PlayState::PlayState() {
 
 void PlayState::load() {
   std::cout << "entering PlayState\n";
+  // parsing Player; m_gameObjects and m_textureIDList now only contain Player; other Objects are controlled by (Layers of) pLevel
+  StateParser stateParser;
+  stateParser.parseState("assets/game.xml", s_playID, &m_gameObjects, &m_textureIDList);
+
+  // parsing Level
   LevelParser levelParser;
   pLevel = levelParser.parseLevel(Game::Instance()->getLevelFiles()[Game::Instance()->getCurrentLevel()-1].c_str());
   if (pLevel != nullptr)
@@ -51,7 +57,11 @@ void PlayState::update() {
 
 void PlayState::render() {
   if (m_bLoadingComplete) {
-    pLevel->render();
+    // pLevel->render();
+    // render Player
+    for (int i=0; i<m_gameObjects.size(); i++) {
+      m_gameObjects[i]->render();
+    }
   }
   // SDL_SetRenderDrawColor(renderer, 0, 128, 255, 255);
   // SDL_RenderClear(renderer);

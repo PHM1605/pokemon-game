@@ -16,7 +16,7 @@
       <texture filename="assets/player.png" ID="player" />
     </TEXTURES>
     <OBJECTS>
-      <object type="Player" x="400" y="400" width="32" height="32" textureID="player" numFrames="4" />
+      <object type="Player" x="1412" y="1476" width="48" height="48" textureID="player" numFrames="4" />
     </OBJECTS>
   </PLAY>
 
