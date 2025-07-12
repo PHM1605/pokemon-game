@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="5">
+ <tileset firstgid="1" name="blocks1" tilewidth="32" tileheight="32" spacing="2" margin="2" tilecount="198" columns="18">
+  <image source="blocks1.png" width="614" height="376"/>
+ </tileset>
+ <layer id="1" name="Overlay" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt0cERQEAABMFLg6AuDjlKzl/xNuhH/7dm5xhjAgAAAAAAAAAAAACftkU83aGi0KKwoaLQorChotCisKGi0KKwoaLQorChotCisKGi0KKwoaLQorChotCisKGi0KKwoaLQorCh4q7FfsEf/vgbf7T4o8UfLf5oKbQobKgotChsqCi0KGyoKLQobKgotChsqCi0KGyoKLQobKgotChsqCi0KGyoKLQobKgotChsqFhO1gf4AwAAAAAAAAAAAAAAAAAAAOB9Dl9r9tI=
+  </data>
+ </layer>
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="3" name="Player" x="1412" y="1476" width="48" height="48"/>
+  <object id="4" name="npc1" x="1640" y="1664" width="48" height="48"/>
+ </objectgroup>
+ <layer id="3" name="Collision" width="100" height="100" visible="0">
+  <properties>
+   <property name="collidable" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0MENwzAAA7Esnf27gj/uKQAP4ADS+zzPCwAAAAAAAAAAAADAX9XV+9fU1fvX1NX719TV+9fU1fvX1NX719TV+9fU1fvX1NX719TV+9fU1fvXnH50q3r/mtOPblXvX3P60a3q/WtOP7pVvX/N6Ue3qvevOf3oVvX+NXX1/jV19f41dfX+NXX1/jV19f41dfX+NXX1/jV19f41dfX+NXX1/jV19X4AAAAAAAAAAAAAAAAAAAAA+Lof3mlPdw==
+  </data>
+ </layer>
+</map>
