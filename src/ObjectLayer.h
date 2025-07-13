@@ -5,7 +5,7 @@
 
 class ObjectLayer: public Layer {
 public:
-  ObjectLayer();
+  // ObjectLayer();
   virtual ~ObjectLayer();
 
   virtual void update();
@@ -13,8 +13,6 @@ public:
 
   std::vector<GameObject*>* getGameObjects() { return &m_gameObjects; }
 
-  // virtual bool getIsCollision() { return m_bIsCollision; }
-  // virtual void setIsCollision(bool isCollision) { m_bIsCollision = isCollision; }
 private:
   std::vector<GameObject*> m_gameObjects;
   bool m_bIsCollision;

@@ -16,7 +16,7 @@ public:
   virtual std::string type() = 0;
 
   Vector2D& getPosition() { return m_position; }
-  void setCollisionLayers(std::vector<TileLayer*>* layers) { m_pCollisionLayers = layers; }
+  // void setCollisionLayers(std::vector<TileLayer*>* layers) { m_pCollisionLayers = layers; }
 
 protected:
   GameObject():
@@ -47,5 +47,5 @@ protected:
   int m_alpha;
   std::unique_ptr<LoaderParams> m_pParams;
   std::string m_textureID;
-  std::vector<TileLayer*>* m_pCollisionLayers;
+  // std::vector<TileLayer*>* m_pCollisionLayers;
 };

@@ -16,6 +16,7 @@ public:
   virtual void clean();
 
   virtual std::string getStateID() const { return s_playID; }
+  Player* getPlayer() { return m_pPlayer; }
 
 private:
   // Player m_player;
@@ -27,6 +28,7 @@ private:
 
   std::vector<GameObject*> m_gameObjects;
   Level* pLevel;
+  Player* m_pPlayer = nullptr;
 
   static const std::string s_playID;
 };

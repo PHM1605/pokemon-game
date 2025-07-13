@@ -24,9 +24,16 @@ void PlayState::load() {
   // parsing Level
   LevelParser levelParser;
   pLevel = levelParser.parseLevel(Game::Instance()->getLevelFiles()[Game::Instance()->getCurrentLevel()-1].c_str());
-  if (pLevel != nullptr)
+  if (pLevel != nullptr) {
+    for (auto &pGameObject: m_gameObjects) {
+      Player* pPlayer = dynamic_cast<Player*>(pGameObject);
+      if (pPlayer) {
+        pPlayer->setLevel(pLevel);
+        m_pPlayer = pPlayer;
+      }
+    }
     m_bLoadingComplete = true;
-
+  }
 }
 
 void PlayState::update() {
@@ -34,7 +41,7 @@ void PlayState::update() {
   for (auto &gameObject: m_gameObjects) {
     gameObject->update();
   }
-  // pLevel->update();
+  //pLevel->update();
 
   // if (m_duelTriggered) {
   //   m_duelStartTimer++;

@@ -26,9 +26,6 @@ public:
   // that small Tile belongs to which Tileset image?
   Tileset getTilesetByID(int tileID); 
 
-  // bool getIsCollision() { return m_bCollision; }
-  // void setIsCollision(bool isCollision) { m_bCollision = isCollision;}  
-
 private:
   // m_numColumns: whole TileLayer width [cell]
   // m_numRows: whole TileLayer height [cell]

@@ -165,7 +165,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 
       pGameObject->load(std::make_unique<LoaderParams>(x, y, width, height, textureID, numFrames, animSpeed));
       // set collision layers for every objects
-      pGameObject->setCollisionLayers(pLevel->getCollisionLayers());
+      // pGameObject->setCollisionLayers(pLevel->getCollisionLayers());
       pObjectLayer->getGameObjects()->push_back(pGameObject);
     }
   }

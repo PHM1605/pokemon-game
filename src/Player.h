@@ -3,6 +3,7 @@
 #include <memory>
 #include <string>
 #include "GameObjectFactory.h"
+#include "Level.h"
 
 class Player: public GameObject {
 public:
@@ -14,18 +15,21 @@ public:
   void handleInput();
   void update();
   void render();
-  SDL_Rect getRect() const;
+  void handleMovement(Vector2D velocity);
+  bool checkCollideTile(Vector2D newPos);
   
+  void setLevel(Level* pLevel) { m_pLevel = pLevel; }
+  Level* getLevel() { return m_pLevel; }
 
 private:
   SDL_Texture* m_texture = nullptr;
-  SDL_Rect m_rect;
-  int m_speed = 2;
+  int m_speed = 4;
 
   bool m_bMoveRight;
   bool m_bMoveLeft;
   bool m_bMoveUp;
   bool m_bMoveDown;
+  Level* m_pLevel;
 };
 
 class PlayerCreator: public BaseCreator {
