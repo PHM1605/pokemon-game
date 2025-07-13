@@ -26,12 +26,16 @@ public:
   // that small Tile belongs to which Tileset image?
   Tileset getTilesetByID(int tileID); 
 
+  // bool getIsCollision() { return m_bCollision; }
+  // void setIsCollision(bool isCollision) { m_bCollision = isCollision;}  
+
 private:
   // m_numColumns: whole TileLayer width [cell]
   // m_numRows: whole TileLayer height [cell]
   int m_numColumns;
   int m_numRows;
   int m_tileSize;
+  bool m_bCollision;   // TileLayer is collision layer or not
 
   const std::vector<Tileset>& m_tilesets;
   std::vector<std::vector<int>> m_tileIDs; // our main data

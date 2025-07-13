@@ -2,6 +2,10 @@
 #include "Game.h"
 #include "ObjectLayer.h"
 
+// ObjectLayer::ObjectLayer() {
+//   m_bIsCollision = false;
+// }
+
 ObjectLayer::~ObjectLayer() {
   for (std::vector<GameObject*>::iterator it = m_gameObjects.begin(); it!=m_gameObjects.end(); ++it) {
     delete (*it);

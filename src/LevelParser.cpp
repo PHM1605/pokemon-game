@@ -240,6 +240,7 @@ void LevelParser::parseTileLayer(
   pTileLayer->setTileIDs(data);
   // store <layer> with <property name="collidable".../> to a separate vector 
   if (collidable) {
+    // pTileLayer->setIsCollision(true);
     pCollisionLayers->push_back(pTileLayer);
   }
   // Note: 'pCollisionLayers' is a subset of 'pLayers'

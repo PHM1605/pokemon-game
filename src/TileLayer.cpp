@@ -5,7 +5,8 @@
 #include "TileLayer.h"
 
 TileLayer::TileLayer(int tileSize, int mapWidth, int mapHeight, const std::vector<Tileset>& tilesets):
-  m_tileSize(tileSize), m_tilesets(tilesets) 
+  m_tileSize(tileSize), m_tilesets(tilesets)
+  // ,   m_bCollision(false)
 {
   m_numColumns = mapWidth; // cell 
   m_numRows = mapHeight; // cell 
