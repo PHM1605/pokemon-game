@@ -19,7 +19,7 @@ void MainMenuState::update() {
     for (int i=0; i<m_gameObjects.size(); i++) {
       m_gameObjects[i]->update();
     }
-    if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_D)) {
+    if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
       Game::Instance()->getStateMachine()->changeState(new PlayState());
     }
   }

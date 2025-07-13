@@ -1,6 +1,7 @@
 #include <SDL2/SDL_ttf.h>
 // #include "DuelState.h"
 #include "Game.h"
+#include "InputHandler.h"
 #include "LevelParser.h"
 #include "PlayState.h"
 #include "StateParser.h"
@@ -29,6 +30,12 @@ void PlayState::load() {
 }
 
 void PlayState::update() {
+
+  for (auto &gameObject: m_gameObjects) {
+    gameObject->update();
+  }
+  // pLevel->update();
+
   // if (m_duelTriggered) {
   //   m_duelStartTimer++;
   //   // animate text sliding in
@@ -57,7 +64,7 @@ void PlayState::update() {
 
 void PlayState::render() {
   if (m_bLoadingComplete) {
-    // pLevel->render();
+    pLevel->render();
     // render Player
     for (int i=0; i<m_gameObjects.size(); i++) {
       m_gameObjects[i]->render();
