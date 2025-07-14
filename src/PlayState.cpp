@@ -117,4 +117,3 @@ void PlayState::clean() {
   //     std::cerr << "TTF_OpenFont failed: " << TTF_GetError() << "\n";
   //   }
   // }
-}
