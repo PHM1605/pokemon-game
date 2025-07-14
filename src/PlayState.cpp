@@ -1,5 +1,5 @@
 #include <SDL2/SDL_ttf.h>
-// #include "DuelState.h"
+#include "DuelState.h"
 #include "Game.h"
 #include "InputHandler.h"
 #include "LevelParser.h"
@@ -10,7 +10,6 @@
 const std::string PlayState::s_playID = "PLAY";
 
 PlayState::PlayState() {
-  // m_opponent.load(r, "assets/opponent.png", 600, 300);
 }
 
 void PlayState::load() {
@@ -35,13 +34,45 @@ void PlayState::load() {
 }
 
 void PlayState::update() {
-
+  // if running a Duel State -> running animation first
+  if (m_duelTriggered) {    
+    m_duelStartTimer++;
+    if (m_duelStartTimer > 120) {
+      Game::Instance()->getStateMachine()->changeState(new DuelState());
+    }
+    return;
+  }
+  // Update Player
   for (auto &gameObject: m_gameObjects) {
     gameObject->update();
   }
   pLevel->update();
+  if (GameObject* pCollidedNpc = m_collisionManager.checkPlayerNpcCollision(m_pPlayer, *pLevel->getObjectLayer()->getGameObjects())) {
+    m_duelTriggered = true;
+    m_duelStartTimer = 0;
+  }
 
-  // if (m_duelTriggered) {
+  
+}
+
+void PlayState::render() {
+  if (m_bLoadingComplete) {
+    pLevel->render();
+    // render Player
+    for (int i=0; i<m_gameObjects.size(); i++) {
+      m_gameObjects[i]->render();
+    }
+  }
+}
+
+void PlayState::clean() {
+  for (auto& pGameObject: m_gameObjects) {
+    delete pGameObject;
+  }
+  delete pLevel;
+}
+
+// if (m_duelTriggered) {
   //   m_duelStartTimer++;
   //   // animate text sliding in
   //   if (m_textX < 400)
@@ -65,20 +96,7 @@ void PlayState::update() {
   //   m_duelStartTimer = 0;
   //   m_textX = -500; // reset animation
   // }
-}
 
-void PlayState::render() {
-  if (m_bLoadingComplete) {
-    pLevel->render();
-    // render Player
-    for (int i=0; i<m_gameObjects.size(); i++) {
-      m_gameObjects[i]->render();
-    }
-  }
-  // SDL_SetRenderDrawColor(renderer, 0, 128, 255, 255);
-  // SDL_RenderClear(renderer);
-  // m_player.render(renderer);
-  // m_opponent.render(renderer);
 
   // if (m_duelTriggered) {
   //   // Show "DUEL START!" overlay
@@ -99,11 +117,4 @@ void PlayState::render() {
   //     std::cerr << "TTF_OpenFont failed: " << TTF_GetError() << "\n";
   //   }
   // }
-}
-
-void PlayState::clean() {
-  for (auto& pGameObject: m_gameObjects) {
-    delete pGameObject;
-  }
-  delete pLevel;
 }

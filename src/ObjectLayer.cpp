@@ -1,5 +1,6 @@
 #include "Camera.h"
 #include "Game.h"
+#include "GameObject.h"
 #include "ObjectLayer.h"
 
 // ObjectLayer::ObjectLayer() {
@@ -17,7 +18,7 @@ void ObjectLayer::update() {
   Vector2D camPos = Camera::Instance()->getPosition();
   
   if (!m_gameObjects.empty()) {
-    for (std::vector<GameObject*>::iterator it = m_gameObjects.begin(); it != m_gameObjects.end();) {
+    for (std::vector<GameObject*>::iterator it = m_gameObjects.begin(); it != m_gameObjects.end(); it++) {
       // if GameObject is within screen
       if ((*it)->getPosition().getX() <= camPos.getX() + Game::Instance()->getGameWidth()) {
         (*it)->setUpdating(true);

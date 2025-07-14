@@ -1,7 +1,8 @@
 #pragma once 
 #include <vector>
-#include "GameObject.h"
 #include "Layer.h"
+
+class GameObject;
 
 class ObjectLayer: public Layer {
 public:

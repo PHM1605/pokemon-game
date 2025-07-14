@@ -19,3 +19,12 @@ void Level::render() {
       m_layers[i]->render();
   }
 }
+
+ObjectLayer* Level::getObjectLayer() {
+  for (auto layer: m_layers) {
+    if (auto pObjectLayer = dynamic_cast<ObjectLayer*>(layer)) {
+      return pObjectLayer;
+    }
+  }
+  return nullptr;
+}

@@ -1,15 +1,11 @@
+#include <iostream>
 #include "DuelState.h"
 #include "Game.h"
 
-DuelState::DuelState() {
-  // position of Card on screen is 500, 300
-  m_card.load("assets/bewd.png", 500, 300, 150, 200);
-}
+const std::string DuelState::s_duelStateID = "DUEL";
 
-DuelState:: ~DuelState() {}
+void DuelState::update() {}
 
-void DuelState::update(const SDL_Event &e) {}
-
-void DuelState::render(SDL_Renderer* renderer) {
-  m_card.render(renderer);
+void DuelState::render() {
+  std::cout << "Rendering " << s_duelStateID << "\n";
 }

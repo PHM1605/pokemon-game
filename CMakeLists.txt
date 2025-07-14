@@ -5,6 +5,8 @@ set(SourceFiles
   src/Background.cpp
   src/base64.cpp
   src/Camera.cpp 
+  src/CollisionManager.cpp
+  src/DuelState.cpp
   src/Game.cpp 
   src/GameObjectFactory.cpp
   src/GameStateMachine.cpp

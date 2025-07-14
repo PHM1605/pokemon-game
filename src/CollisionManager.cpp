@@ -1,6 +1,9 @@
 #include "CollisionManager.h"
 
-bool CollisionManager::checkPlayerNpcCollision(Player* pPlayer, const std::vector<GameObject*> &objects) {
+GameObject* CollisionManager::checkPlayerNpcCollision(
+    Player* pPlayer, 
+    const std::vector<GameObject*>& objects
+  ) {
   SDL_Rect* pRect1 = new SDL_Rect();
   pRect1->x = pPlayer->getPosition().getX();
   pRect1->y = pPlayer->getPosition().getY();
@@ -20,10 +23,10 @@ bool CollisionManager::checkPlayerNpcCollision(Player* pPlayer, const std::vecto
     pRect2->h = objects[i]->getHeight();
 
     if (SDL_HasIntersection(pRect1, pRect2)) {
-      return true;
+      return objects[i];
     } 
     delete pRect2;
   }
   delete pRect1;
-  return false;
+  return nullptr; // no collision
 }

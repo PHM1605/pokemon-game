@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "Layer.h"
+#include "ObjectLayer.h"
 
 class TileLayer;
 
@@ -27,6 +28,7 @@ public:
   std::vector<Tileset>* getTilesets() { return &m_tilesets; }
   std::vector<Layer*>* getLayers() { return &m_layers; }
   std::vector<TileLayer*>* getCollisionLayers() { return &m_collisionLayers; }
+  ObjectLayer* getObjectLayer();
 
 private:
   friend class LevelParser;

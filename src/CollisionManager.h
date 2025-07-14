@@ -4,5 +4,7 @@
 
 class CollisionManager {
 public:
-  bool checkPlayerNpcCollision(Player* player, const std::vector<GameObject*>& objects);
+  GameObject* checkPlayerNpcCollision(
+    Player* player, 
+    const std::vector<GameObject*>& objects);
 };

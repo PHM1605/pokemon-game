@@ -1,15 +1,18 @@
 #pragma once 
 #include "GameState.h"
-#include "Card.h"
 
 class DuelState: public GameState {
 public:
-  DuelState();
-  ~DuelState();
+  DuelState() {}
+  ~DuelState() {}
   
-  void update(const SDL_Event& e);
-  void render(SDL_Renderer* renderer);
+  virtual void load() {}
+  virtual void update();
+  virtual void render();
+  void clean() {}
+
+  virtual std::string getStateID() const { return s_duelStateID; }
 
 private:
-  Card m_card;
+  static const std::string s_duelStateID;
 };
