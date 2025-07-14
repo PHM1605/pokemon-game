@@ -7,7 +7,7 @@
 #include "InputHandler.h"
 #include "MainMenuState.h"
 #include "MenuButton.h"
-#include "NPC.h"
+#include "Npc.h"
 #include "Player.h"
 #include "TextureManager.h"
 // #include "OverworldState.h"
@@ -65,7 +65,7 @@ bool Game::init(const char* title, int width, int height, bool fullscreen) {
   GameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
   GameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
   GameObjectFactory::Instance()->registerType("Background", new BackgroundCreator());
-  GameObjectFactory::Instance()->registerType("NPC", new NPCCreator());
+  GameObjectFactory::Instance()->registerType("Npc", new NpcCreator());
 
   m_pGameStateMachine = new GameStateMachine();
   m_pGameStateMachine->changeState(new MainMenuState());

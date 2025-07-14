@@ -1,8 +1,8 @@
 #pragma once 
 #include "GameState.h"
 #include "Level.h"
-#include "NPC.h"
-#include "Player.h"
+#include "Npc.h"
+#include "CollisionManager.h"
 #include <string>
 
 class PlayState: public GameState {
@@ -19,8 +19,7 @@ public:
   Player* getPlayer() { return m_pPlayer; }
 
 private:
-  // Player m_player;
-  // NPC m_opponent;
+  // Npc m_opponent;
 
   bool m_duelTriggered = false;
   int m_duelStartTimer = 0; // frames
@@ -31,4 +30,6 @@ private:
   Player* m_pPlayer = nullptr;
 
   static const std::string s_playID;
+
+  CollisionManager m_collisionManager;
 };

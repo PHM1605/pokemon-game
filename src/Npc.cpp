@@ -1,10 +1,10 @@
 #include <SDL2/SDL_image.h>
 #include "Camera.h"
 #include "Game.h"
-#include "NPC.h"
+#include "Npc.h"
 #include "TextureManager.h"
 
-void NPC::load(std::unique_ptr<LoaderParams> const pParams) {
+void Npc::load(std::unique_ptr<LoaderParams> const pParams) {
   m_position = Vector2D(pParams->getX(), pParams->getY());
   m_width = pParams->getWidth();
   m_height = pParams->getHeight();
@@ -12,7 +12,7 @@ void NPC::load(std::unique_ptr<LoaderParams> const pParams) {
   m_numFrames = pParams->getNumFrames();
 }
 #include <iostream>
-void NPC::render() {
+void Npc::render() {
   Vector2D camPos = Camera::Instance()->getPosition();
   TextureManager::Instance()->drawFrame(
     m_textureID,
@@ -23,10 +23,6 @@ void NPC::render() {
   );
 }
 
-void NPC::update() {
+void Npc::update() {
   
 }
-
-// SDL_Rect NPC::getRect() const {
-//   return m_rect;
-// }

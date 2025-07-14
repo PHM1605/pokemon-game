@@ -14,7 +14,7 @@ set(SourceFiles
   src/main.cpp
   src/MainMenuState.cpp
   src/MenuButton.cpp
-  src/NPC.cpp
+  src/Npc.cpp
   src/ObjectLayer.cpp
   src/PlayState.cpp 
   src/Player.cpp

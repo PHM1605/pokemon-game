@@ -54,7 +54,7 @@ Level* LevelParser::parseLevel(const char* levelFile) {
   // </layer>
   
   // <objectgroup name="Object Layer 1" width="200" height="15">
-  //   <object name="npc1" type="NPC" x="718" y="335" width="32" height="32">
+  //   <object name="npc1" type="Npc" x="718" y="335" width="32" height="32">
   //     <properties>
   //       <property name="numFrames" value="4"/>
   //       <property name="textureHeight" value="34"/>
@@ -119,7 +119,7 @@ void LevelParser::parseTilesets(TiXmlElement* pTilesetRoot, std::vector<Tileset>
 }
 
 // <objectgroup name="Object Layer 1" width="200" height="15">
-//   <object name="npc1" type="NPC" x="718" y="335" width="32" height="32">
+//   <object name="npc1" type="Npc" x="718" y="335" width="32" height="32">
 //     <properties>
 //       <property name="numFrames" value="4"/>
 //       <property name="textureHeight" value="34"/>

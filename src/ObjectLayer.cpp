@@ -14,13 +14,19 @@ ObjectLayer::~ObjectLayer() {
 }
 
 void ObjectLayer::update() {
-  // for (std::vector<GameObject*>::iterator it = m_gameObjects.begin(); it != m_gameObjects.end();) {
-  //   // if GameObject is within screen
-  //   Vector2D camPos = Camera::Instance()->getPosition();
-  //   if ((*it)->getPosition().getX() <= camPos.getX() + Game::Instance()->getGameWidth()) {
-  //     (*it)->update();
-  //   }
-  // }
+  Vector2D camPos = Camera::Instance()->getPosition();
+  
+  if (!m_gameObjects.empty()) {
+    for (std::vector<GameObject*>::iterator it = m_gameObjects.begin(); it != m_gameObjects.end();) {
+      // if GameObject is within screen
+      if ((*it)->getPosition().getX() <= camPos.getX() + Game::Instance()->getGameWidth()) {
+        (*it)->setUpdating(true);
+      } else {
+        (*it)->setUpdating(false);
+      }
+    }    
+  }
+
 }
 
 void ObjectLayer::render() {

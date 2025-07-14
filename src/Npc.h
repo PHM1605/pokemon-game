@@ -4,10 +4,10 @@
 #include "GameObject.h"
 #include "GameObjectFactory.h"
 
-class NPC: public GameObject {
+class Npc: public GameObject {
 public:
-  NPC(): GameObject() {}
-  virtual ~NPC() {}
+  Npc(): GameObject() {}
+  virtual ~Npc() {}
 
   
 
@@ -17,15 +17,15 @@ public:
   
   // SDL_Rect getRect() const;
 
-  virtual std::string type() { return "NPC"; }
+  virtual std::string type() { return "Npc"; }
 
 private:
   SDL_Texture* m_texture = nullptr;
   SDL_Rect m_rect;
 };
 
-class NPCCreator: public BaseCreator {
+class NpcCreator: public BaseCreator {
   GameObject* createGameObject() const {
-    return new NPC();
+    return new Npc();
   }
 };

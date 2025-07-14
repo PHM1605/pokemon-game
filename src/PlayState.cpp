@@ -10,8 +10,6 @@
 const std::string PlayState::s_playID = "PLAY";
 
 PlayState::PlayState() {
-  // SDL_Renderer* r = Game::Instance()->getRenderer();
-  // m_player.load(r, "assets/player.png", 200, 300); // position on map (200,300)
   // m_opponent.load(r, "assets/opponent.png", 600, 300);
 }
 
@@ -41,7 +39,7 @@ void PlayState::update() {
   for (auto &gameObject: m_gameObjects) {
     gameObject->update();
   }
-  //pLevel->update();
+  pLevel->update();
 
   // if (m_duelTriggered) {
   //   m_duelStartTimer++;

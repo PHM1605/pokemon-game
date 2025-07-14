@@ -16,7 +16,11 @@ public:
   virtual std::string type() = 0;
 
   Vector2D& getPosition() { return m_position; }
-  // void setCollisionLayers(std::vector<TileLayer*>* layers) { m_pCollisionLayers = layers; }
+  int getWidth() { return m_width; }
+  int getHeight() { return m_height; }
+
+  void setUpdating(bool updating) { m_bUpdating = updating; }
+  bool getUpdating() { return m_bUpdating; }
 
 protected:
   GameObject():
